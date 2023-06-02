@@ -15,18 +15,16 @@ class LoginTest extends TestCase
      */
     public function shouldBeLogin()
     {
-        $client = Client::create([
-            'firstname' => 'Juan',
-            'lastname' => 'Perez',
-            'email' => 'example@email.com',
-            'password' => bcrypt('12345678')
+        $client = Client::factory()->create([
+            'email' => 'client@example.com',
+            'password' => bcrypt('password')
         ]);
 
         $response = $this->post(
             route('api.auth.login'),
             [
                 'email' => $client->email,
-                'password' => '12345678'
+                'password' => 'password'
             ]
         );
 
