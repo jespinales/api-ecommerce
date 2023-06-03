@@ -24,7 +24,7 @@ class LoginController extends Controller
             ], 401);
         }
 
-        return response()->json([
+        return jsend_success([
             'client' => $client,
             'access_token' => $client->createToken('API token')->plainTextToken
         ]);
