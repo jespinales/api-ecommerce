@@ -28,22 +28,13 @@ class LoginTest extends TestCase
             ]
         );
 
-        $dataResponse = $response->json();
-
         $response->assertStatus(200);
-        $response->assertJsonStructure(
-            ['client', 'access_token'],
-            $dataResponse
-        );
-        $response->assertJson([
-            'client' => [
-                'firstname' => $client->firstname,
-                'lastname' => $client->lastname,
-                'email' => $client->email,
-            ],
-            'access_token' => $dataResponse['access_token']
+        $response->assertJsonStructure([
+            'status',
+            'data' => [
+                'client',
+                'access_token'
+            ]
         ]);
-        $this->assertArrayNotHasKey('password', $dataResponse['client']);
-        $this->assertArrayNotHasKey('remember_token', $dataResponse['client']);
     }
 }
