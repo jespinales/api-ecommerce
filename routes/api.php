@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\User\UserInfoRetrieveController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,8 @@ Route::prefix('auth')->group(function () {
     Route::post('register', RegisterController::class)->name('api.auth.register');
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function() {
+    Route::prefix('client')->group(function () {
+        Route::get('/me', UserInfoRetrieveController::class)->name('api.client.me');
+    });
 });
