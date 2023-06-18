@@ -25,7 +25,7 @@ class UserInfoRetrieveTest extends TestCase
 
         $response = $this->withHeaders([
             'Authorization' => "Bearer $accessToken"
-        ])->get(route('api.client.me', ['client' => $client->id]));
+        ])->get(route('api.client.me'));
 
         $response->assertStatus(200);
 

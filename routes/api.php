@@ -23,6 +23,6 @@ Route::prefix('auth')->group(function () {
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::prefix('client')->group(function () {
-        Route::get('/{client}', UserInfoRetrieveController::class)->name('api.client.me');
+        Route::get('/me', UserInfoRetrieveController::class)->name('api.client.me');
     });
 });

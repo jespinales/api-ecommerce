@@ -8,16 +8,10 @@ use Illuminate\Http\Request;
 
 class UserInfoRetrieveController extends Controller
 {
-    public function __invoke(Client $client)
+    public function __invoke()
     {
-        $response = [];
-        if ($client->id === request()->user()->id) {
-            $response = jsend_success([
-                'client' => $client
-            ]);
-        } else {
-            $response = jsend_fail([], 403);
-        }
-        return $response;
+        return jsend_success([
+            'client' => request()->user()
+        ]);
     }
 }
