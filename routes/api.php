@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\User\UserInfoRetrieveController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::prefix('auth')->group(function () {
     Route::post('login', LoginController::class)->name('api.auth.login');
+    Route::post('logout', LogoutController::class)
+    ->name('api.auth.logout')
+    ->middleware('auth:sanctum');
     Route::post('register', RegisterController::class)->name('api.auth.register');
 });
 
