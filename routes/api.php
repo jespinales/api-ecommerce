@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\User\UserInfoRetrieveController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\User\UserInfoRetrieveController;
+use App\Http\Controllers\Categories\IndexCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,8 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::prefix('client')->group(function () {
         Route::get('/me', UserInfoRetrieveController::class)->name('api.client.me');
     });
+});
+
+Route::prefix('categories')->group(function() {
+    Route::get('/', IndexCategoryController::class)->name('api.categories.index');
 });
