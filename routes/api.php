@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\User\UserInfoRetrieveController;
 use App\Http\Controllers\Categories\IndexCategoryController;
+use App\Http\Controllers\Categories\ShowCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,5 @@ Route::middleware('auth:sanctum')->group(function() {
 
 Route::prefix('categories')->group(function() {
     Route::get('/', IndexCategoryController::class)->name('api.categories.index');
+    Route::get('/{category}', ShowCategoryController::class)->name('api.categories.show');
 });
