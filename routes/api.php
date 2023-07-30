@@ -17,11 +17,12 @@ use App\Http\Controllers\Auth\LogoutController;
 */
 Route::prefix('auth')->group(function () {
     Route::post('login', LoginController::class)->name('api.auth.login');
-    Route::post('logout', LogoutController::class)
-    ->name('api.auth.logout')
-    ->middleware('auth:sanctum');
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function() {
+
+    Route::prefix('auth')->group(function () {
+        Route::post('logout', LogoutController::class)->name('api.auth.logout');
+    });
+
 });
