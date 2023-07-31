@@ -21,13 +21,13 @@ use App\Http\Controllers\Categories\ShowCategoryController;
 */
 Route::prefix('auth')->group(function () {
     Route::post('login', LoginController::class)->name('api.auth.login');
-    Route::post('logout', LogoutController::class)
-    ->name('api.auth.logout')
-    ->middleware('auth:sanctum');
     Route::post('register', RegisterController::class)->name('api.auth.register');
 });
 
 Route::middleware('auth:sanctum')->group(function() {
+    Route::prefix('auth')->group(function () {
+        Route::post('logout', LogoutController::class)->name('api.auth.logout');
+    });
     Route::prefix('client')->group(function () {
         Route::get('/me', UserInfoRetrieveController::class)->name('api.client.me');
     });
