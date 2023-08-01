@@ -12,7 +12,7 @@ class IndexCategoriesTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function shouldShowAllCategories(): void
     {
         $response = $this->get(route('api.categories.index'));
 
