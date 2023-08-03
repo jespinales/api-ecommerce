@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\User\UserInfoRetrieveController;
 use App\Http\Controllers\Categories\IndexCategoryController;
 use App\Http\Controllers\Categories\ShowCategoryController;
+use App\Http\Controllers\Categories\StoreCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,9 @@ Route::middleware('auth:sanctum')->group(function() {
     });
     Route::prefix('client')->group(function () {
         Route::get('/me', UserInfoRetrieveController::class)->name('api.client.me');
+    });
+    Route::prefix('categories')->group(function () {
+        Route::post('/', StoreCategoryController::class)->name('api.categories.store');
     });
 });
 
