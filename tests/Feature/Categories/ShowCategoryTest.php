@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class showCategoryTest extends TestCase
+class ShowCategoryTest extends TestCase
 {
     use RefreshDatabase;
 
