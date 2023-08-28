@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Categories\DestroyCategoryController;
+use App\Http\Controllers\Categories\UpdateCategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
@@ -34,6 +36,10 @@ Route::middleware('auth:sanctum')->group(function() {
     });
     Route::prefix('categories')->group(function () {
         Route::post('/', StoreCategoryController::class)->name('api.categories.store');
+        Route::patch('/{category}', UpdateCategoryController::class)
+            ->name('api.categories.update');
+        Route::delete('/{category}', DestroyCategoryController::class)
+            ->name('api.categories.destroy');
     });
 });
 
